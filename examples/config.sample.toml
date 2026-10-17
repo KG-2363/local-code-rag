@@ -1,0 +1,11 @@
+# Demo against the bundled sample repo, no Ollama needed:  lcr --config examples/config.sample.toml index
+[repo]
+path = "sample_repo"   # relative to this file
+name = "sample-shop"
+description = "Fictional bronze/silver/gold pipeline for an online shop"
+
+[ollama]
+embed_model = "hashing"
+
+[index]
+dir = ".local-code-rag/sample-shop"

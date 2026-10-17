@@ -1,0 +1,17 @@
+project: shop-analytics
+tables:
+  orders:
+    source: shop.bronze.orders_raw
+    target: shop.silver.orders
+    retention_days: 30
+  daily_revenue:
+    target: shop.gold.daily_revenue
+jobs:
+  - name: orders_silver
+    schedule: "0 */2 * * *"
+    entrypoint: pipelines.orders.load_orders_silver
+  - name: daily_revenue
+    schedule: "30 1 * * *"
+    entrypoint: pipelines.orders.build_daily_revenue
+late_events:
+  watermark_hours: 6

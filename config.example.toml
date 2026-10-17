@@ -1,0 +1,24 @@
+# Copy to config.toml and set [repo] path. Everything else has a default.
+
+[repo]
+path = "~/projects/your-repo"
+name = "your-repo"                       # used for the index folder and in answers
+description = ""                         # optional one-liner given to the chat model
+extensions = [".py", ".sql", ".yaml", ".yml", ".md"]
+exclude_dirs = [".git", "__pycache__", ".venv", "venv", "node_modules", "dist", "build"]
+
+[ollama]
+base_url = "http://localhost:11434"
+chat_model = "qwen2.5-coder:7b"          # qwen2.5-coder:3b on 8 GB RAM
+embed_model = "nomic-embed-text"         # or "hashing" to run without Ollama (lexical search)
+
+[index]
+# dir = "~/.local-code-rag/your-repo"     # default
+
+[tables]
+# Extra regexes for project-specific read/write helpers; group 1 must capture the table name.
+# read_patterns = ['read_table\(\s*"([\w.]+)"']
+# write_patterns = ['write_table\([^,]+,\s*"([\w.]+)"']
+
+[ui]
+max_results = 10
